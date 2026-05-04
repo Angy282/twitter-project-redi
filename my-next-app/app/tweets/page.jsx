@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import { card } from "../../styles/global";
+import SingleProductPage from "./[id]/page";
 
-const ProductsPage = () => {
+export default async function ProductsPage() {
+  const res = await fetch("https://dummyjson.com/posts");
+  const data = await res.json();
+
+  console.log(data);
   return (
-    <div>I am products page</div>
-  )
+    <div>
+      {" "}
+      Product Page<h1>{data.title}</h1>
+    </div>
+  );
 }
-
-export default ProductsPage
