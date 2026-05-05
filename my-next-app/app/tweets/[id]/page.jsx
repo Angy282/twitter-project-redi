@@ -1,3 +1,4 @@
+import { card, typography, variants } from "@/styles/global";
 import React from "react";
 
 async function getTweet(id) {
@@ -6,21 +7,18 @@ async function getTweet(id) {
 }
 
 export default async function TweetDetails({ params }) {
-  console.log("PARAMS RAW:", params);
-
   const { id } = await params;
-
-  console.log("ID:", id);
+  const tweet = await getTweet(id);
 
   return (
-    <div>
-      <h1>{tweet.title}</h1>
+    <div className={card.cardWrapper + " p-4"}>
+      <h1 className={typography.heading}>Tweet Details</h1>
+
       <p>{tweet.body}</p>
-      <p>
+      <p className="m-6">
         👍 {tweet.reactions.likes} | 👎 {tweet.reactions.dislikes}
       </p>
-      {/* <p>Tags: {tweet.tags.join(", ")}</p> */}
-      <a href="/" style={{ color: "blue", textDecoration: "underline" }}>
+      <a className={variants.secondary} href="/" style={{ color: "blue", textDecoration: "underline" }}>
         ← Back to Feed
       </a>
     </div>

@@ -16,7 +16,7 @@ export default async function HomePage() {
       <h1 className={typography.heading}>Tweet Tweet 🐥</h1>
       <ul className={card.cardsWrapper}>
         {tweets.posts.map((tweet) => (
-          <Link key={tweet.id} href={`/tweet/${tweet.id}`}>
+          <Link key={tweet.id} href={`/tweets/${tweet.id}`}>
             <TweetCard tweet={tweet} />
           </Link>
         ))}
