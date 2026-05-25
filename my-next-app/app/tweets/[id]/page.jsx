@@ -15,7 +15,7 @@ export default async function TweetDetails({ params }) {
       <h1 className={typography.heading}>Tweet Details</h1>
 
       <p>{tweet.body}</p>
-      <p className="m-6">
+      <p className="m-4">
         👍 {tweet.reactions.likes} | 👎 {tweet.reactions.dislikes}
       </p>
       <a className={variants.secondary} href="/" style={{ color: "blue", textDecoration: "underline" }}>

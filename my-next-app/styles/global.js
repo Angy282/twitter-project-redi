@@ -1,7 +1,7 @@
 // Typography tokens (for headings, subheadings, body, paragraph, etc.)
 export const typography = {
   heading:
-    "font-bold text-blue-900 text-center mb-4 text-2xl sm:text-3xl md:text-3xl lg:text-4xl leading-tight",
+    "font-bold text-blue-900 text-center m-6 text-2xl sm:text-3xl md:text-3xl lg:text-4xl leading-tight",
   subheading:
     "font-semibold text-gray-700 text-xl sm:text-xl md:text-2xl leading-snug",
   body: "text-gray-600 text-base sm:text-base md:text-lg leading-relaxed",

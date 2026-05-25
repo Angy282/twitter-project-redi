@@ -10,7 +10,7 @@ export default async function ProductsPage() {
   return (
     <div>
       {" "}
-      Product Page<h1>{data.title}</h1>
+      Product Page
     </div>
   );
 }
