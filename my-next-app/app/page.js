@@ -4,21 +4,26 @@ import React from "react";
 import Link from "next/link";
 
 async function getAllTweets() {
-  const res = await fetch("https://dummyjson.com/posts");
+  const res = await fetch("http://localhost:3000/api/tweets", {});
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch tweets");
+  }
+
   return res.json();
 }
 
 export default async function HomePage() {
   const tweets = await getAllTweets();
+  console.log(tweets);
 
   return (
     <main>
       <h1 className={typography.heading}>Tweet Tweet 🐥</h1>
+      <Link href="/tweets/create">Create Tweet</Link>
       <ul className={card.cardsWrapper}>
-        {tweets.posts.map((tweet) => (
-          <Link key={tweet.id} href={`/tweets/${tweet.id}`}>
-            <TweetCard tweet={tweet} />
-          </Link>
+        {tweets.map((tweet) => (
+          <TweetCard key= {tweet._id} tweet={tweet} />
         ))}
       </ul>
     </main>
