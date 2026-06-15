@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Tweet from "@/models/Tweet";
+import { cookies } from "next/headers";
+
+import jwt from "jsonwebtoken";
 
 export async function GET() {
   await connectDB();
@@ -17,22 +20,37 @@ export async function GET() {
 export async function POST(request) {
   await connectDB();
 
-  const body = await request.json();
-
+  const { title, body, author } = await request.json();
   // if body and title are blank-> should not be saved (same as in frontend part)
-  if (!body.title?.trim() || !body.body?.trim()) {
+  if (!title.trim() || !body.trim()) {
     return NextResponse.json(
       {
-        error: "Title and body are required",
-      },{
+        error: "All fields are required",
+      },
+      {
         status: 400,
       },
     );
   }
 
+  const token = (await cookies()).get("authToken")?.value;
+
+  if (!token) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  let decoded;
+
+  try {
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
+  } catch {
+    return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+  }
+
   const tweet = await Tweet.create({
-    title: body.title.trim(),
-    body: body.body.trim(),
+    title: title.trim(),
+    body: body.trim(),
+    author: decoded.username,
   });
 
   return NextResponse.json(tweet, {

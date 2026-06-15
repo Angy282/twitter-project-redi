@@ -18,12 +18,15 @@ export default async function HomePage() {
   console.log(tweets);
 
   return (
-    <main>
-      <h1 className={typography.heading}>Tweet Tweet 🐥</h1>
-      <Link href="/tweets/create">Create Tweet</Link>
+    <main className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className={`${typography.heading} text-center mb-8`}>
+        🐥 Tweet Tweet
+      </h1>
+
+      {/* <Link href="/tweets/create">Create Tweet</Link> */}
       <ul className={card.cardsWrapper}>
         {tweets.map((tweet) => (
-          <TweetCard key= {tweet._id} tweet={tweet} />
+          <TweetCard key={tweet._id} tweet={tweet} />
         ))}
       </ul>
     </main>

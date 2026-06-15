@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { card } from "@/styles/global";
 
 
 export default function TweetCard({ tweet }) {
@@ -22,9 +23,10 @@ export default function TweetCard({ tweet }) {
     }
   }
   return (
-    <div className="group rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg p-4 h-full">
+    <div className={card.cardWrapper}>
       <Link href={`/tweets/${tweet._id}`}>
         <h2>{tweet.title}</h2>
+        <p className="text-sm text-gray-500">Posted by {tweet.author}</p>
         <p>{tweet.body}</p>
       </Link>
       <p className="mt-3">
@@ -37,7 +39,7 @@ export default function TweetCard({ tweet }) {
       >
         Edit
       </Link>
-      
+
       <button
         onClick={handleDelete}
         className="mt-3 bg-red-500 text-white px-3 py-1 rounded"

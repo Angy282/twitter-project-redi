@@ -18,7 +18,7 @@ export const card = {
     "grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3",
 
   cardWrapper:
-    "group rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg",
+    "group rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl transition duration-300 p-5",
 
   imageWrapper:
     "flex h-56 items-center justify-center rounded-t-xl bg-gray-50 p-4",

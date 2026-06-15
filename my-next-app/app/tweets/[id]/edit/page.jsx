@@ -12,7 +12,7 @@ async function getTweet(id) {
 
   return res.json();
 }
-
+// after fetching the tweet by id, we pass it to form component.
 export default async function EditTweetPage({ params }) {
   const { id } = await params;
   const tweet = await getTweet(id);
