@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
 // reading the cookie and verfiying the token
+// who is making the requests (only the authenticated user)
 async function getCurrentUser() {
   const cookieStore = await cookies();
 
@@ -15,7 +16,7 @@ async function getCurrentUser() {
   }
 
   try {
-    return jwt.verify(token, process.env.JWT_SECRET);
+    return jwt.verify(token, process.env.JWT_SECRET); //the tokent as not modified
   } catch {
     return null;
   }
@@ -76,7 +77,7 @@ export async function PUT(request, { params }) {
   await connectDB();
 
   const currentUser = await getCurrentUser();
-
+// verify user
   if (!currentUser) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -88,7 +89,7 @@ export async function PUT(request, { params }) {
   if (!tweet) {
     return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
   }
-
+// check if the logged in user is the owner of the tweet so he can edit
   if (tweet.author !== currentUser.username) {
     return NextResponse.json(
       { error: "You can only edit your own tweets" },
@@ -104,7 +105,7 @@ export async function PUT(request, { params }) {
       title: body.title.trim(),
       body: body.body.trim(),
     },
-    { new: true },
+    { new: true }, //returns the new one instead of the old
   );
 
   return NextResponse.json(updatedTweet);

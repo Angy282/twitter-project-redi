@@ -16,16 +16,16 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-4">
-          {/* conditional rendering of the user if it exist or not */}
-          {user ? (
-            <>
-              <span className="font-medium">Hi {user.username}</span>
           <Link
             href="/tweets/create"
             className="bg-white text-sky-500 px-4 py-2 rounded-lg font-medium"
           >
             Create Tweet
           </Link>
+          {/* conditional rendering of the user if it exist or not */}
+          {user ? (
+            <>
+              <span className="font-medium">Hi {user.username}</span>
 
               <button
                 onClick={logout}

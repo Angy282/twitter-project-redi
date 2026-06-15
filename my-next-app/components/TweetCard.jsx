@@ -11,7 +11,7 @@ export default function TweetCard({ tweet }) {
   const router = useRouter();
 
   // move it to the deletebtn component
-  // like/dislike functions - moved to LikeBtns.jsx
+  // like/dislike functions - move to LikeBtns.jsx later?
 
   // enabling the edit and delete buttons only for the author of the tweet
   const { user } = useAuth();

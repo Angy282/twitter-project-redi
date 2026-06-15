@@ -8,10 +8,10 @@ export async function GET(request, context) {
   await connectDB();
 
   const { id } = await context.params;
-
+// find the comment that belongs to the tweet id
   const comments = await Comment.find({
     tweetId: id,
-  }).sort({ createdAt: -1 });
+  }).sort({ createdAt: -1 }); //descending order
 
   return NextResponse.json(comments);
 }

@@ -20,13 +20,13 @@ export async function POST(request) {
   if (!isPasswordCorrect) {
     return NextResponse.json(
       {
-        error: "Invalid credentials",
+        error: "invalid credentials",
       },
       { status: 401 },
     );
   }
 
-  // this creates a new token for the user if the details match
+  //  create a new token for the user if the details match
   const token = jwt.sign(
     {
       userId: user._id,
@@ -46,12 +46,12 @@ export async function POST(request) {
       email: user.email,
     },
   });
-
+// storing the Token in a Cookie
   response.cookies.set("authToken", token, {
-    httpOnly: true,
+    httpOnly: true, //js in the browser cannot access the cookie??
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    path: "/",
+    path: "/", //cookie is available in the intire app
     maxAge: 60 * 60 * 24 * 7,
   });
 
