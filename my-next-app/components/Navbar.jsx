@@ -9,7 +9,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className="bg-sky-500 text-white px-6 py-4 shadow">
+    <nav className="bg-slate-800 text-white px-6 py-4 shadow">
       <div className="max-w-4xl mx-auto flex justify-between items-center">
         <Link href="/" className="font-bold text-xl">
           🐣 Tweet Tweet
@@ -17,15 +17,15 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           {/* conditional rendering of the user if it exist or not */}
+          {user ? (
+            <>
+              <span className="font-medium">Hi {user.username}</span>
           <Link
             href="/tweets/create"
             className="bg-white text-sky-500 px-4 py-2 rounded-lg font-medium"
           >
             Create Tweet
           </Link>
-          {user ? (
-            <>
-              <span className="font-medium">Hi {user.username}</span>
 
               <button
                 onClick={logout}

@@ -32,13 +32,13 @@ export default function EditForm({ tweet }) {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        Value={title}
+        value={title}
         onChange={(e) => setTitle(e.target.value)} // we need to add this to update the state when the user types and the new value renders. same with body
         className="border p-2 w-full mb-4"
       />
 
       <textarea
-        Value={body}
+        value={body}
         onChange={(e) => setBody(e.target.value)}
         className="border p-2 w-full mb-4"
         rows="5"
