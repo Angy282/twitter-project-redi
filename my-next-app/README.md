@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🐦 Tweet Tweet – Full-Stack Twitter Clone
 
-## Getting Started
+A full-stack Twitter-inspired social media application built with Next.js, MongoDB, and Tailwind CSS.
 
-First, run the development server:
+Users can create, edit, delete, like, dislike, and comment on tweets. The application also includes user authentication with secure password hashing and protected routes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Add your deployed link here
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📸 Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Add screenshots or GIFs here
 
-## Learn More
+⸻
 
-To learn more about Next.js, take a look at the following resources:
+✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📝 Tweets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Create new tweets
+* View all tweets on the homepage
+* View individual tweet details
+* Edit your own tweets
+* Delete your own tweets
 
-## Deploy on Vercel
+❤️ Reactions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Like tweets
+* Dislike tweets
+* Real-time reaction count updates
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+💬 Comments
+
+* Add comments to tweets
+* View all comments for a specific tweet
+
+🔐 Authentication & Authorization
+
+* User registration
+* User login
+* Password hashing with bcrypt
+* JWT-based authentication
+* Secure authentication cookies
+* Protected routes
+* Backend authorization to ensure users can only edit or delete their own tweets
+
+🎨 User Experience
+
+* Responsive design with Tailwind CSS
+* Dynamic routing with the Next.js App Router
+* Client and server components
+* Server-side data fetching
+
+⸻
+
+🛠️ Tech Stack
+
+Frontend
+
+* Next.js 16 (App Router)
+* React
+* Tailwind CSS
+
+Backend
+
+* Next.js API Routes
+* MongoDB
+* Mongoose
+
+Authentication
+
+* JSON Web Tokens (JWT)
+* bcryptjs
+
+Development Tools
+
+* Insomnia / Postman
+* Git & GitHub
+
+⸻
+
+📂 Project Structure
+
+app/
+├── api/
+│   ├── auth/
+│   └── tweets/
+├── login/
+├── signup/
+├── tweets/
+│   ├── create/
+│   └── [id]/
+│       └── edit/
+components/
+context/
+lib/
+models/
+styles/
+middleware.js
+
+⸻
+
+🧠 What I Learned
+
+During this project, I gained hands-on experience with:
+
+* Building RESTful APIs using Next.js API Routes
+* Creating dynamic routes with the App Router
+* Working with MongoDB and Mongoose schemas
+* Implementing full CRUD functionality
+* Managing global state with React Context API
+* Protecting routes with middleware
+* Handling authentication with JWT
+* Securing passwords with bcrypt
+* Structuring a full-stack application
+
+⸻
+
+🔒 Environment Variables
+
+Variable	Description
+MONGODB_URI	MongoDB connection string
+JWT_SECRET	Secret key used to sign JWT tokens
+
+⸻
+
+👩‍💻 Author
+
+Built with ❤️ by Angy Hijaze
+
+* GitHub: https://github.com/Angy282
+* LinkedIn: https://linkedin.com/in/Angham-hijaze
+
+⸻
