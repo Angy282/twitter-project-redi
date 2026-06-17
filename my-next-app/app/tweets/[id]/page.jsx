@@ -1,27 +1,31 @@
-import { card, typography, variants } from "@/styles/global";
+import { card } from "@/styles/global";
 import Link from "next/link";
 // import DeleteBtn from "@/components/DeleteBtn";
 import OwnerActions from "@/components/OwnerActions";
 import CommentForm from "@/components/CommentForm";
 
+import { connectDB } from "@/lib/mongodb";
+import Tweet from "@/models/Tweet";
+import Comment from "@/models/Comment";
+
 async function getTweet(id) {
-  const res = await fetch(`http://localhost:3000/api/tweets/${id}`, {
-    cache: "no-store",
-  });
+  await connectDB();
 
-  return res.json();
+  const tweet = await Tweet.findById(id).lean();
+
+  return JSON.parse(JSON.stringify(tweet));
 }
-// fetching comments for a specific tweet
+
 async function getComments(id) {
-  const res = await fetch(
-    `http://localhost:3000/api/tweets/${id}/comments`,
+  await connectDB();
 
-    {
-      cache: "no-store",
-    },
-  );
+  const comments = await Comment.find({
+    tweetId: id,
+  })
+    .sort({ createdAt: -1 })
+    .lean();
 
-  return res.json();
+  return JSON.parse(JSON.stringify(comments));
 }
 
 export default async function TweetDetails({ params }) {

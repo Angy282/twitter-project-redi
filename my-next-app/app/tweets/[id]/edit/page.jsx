@@ -1,16 +1,18 @@
 import EditForm from "@/components/EditForm";
 import Link from "next/link";
+import { connectDB } from "@/lib/mongodb";
+import Tweet from "@/models/Tweet";
 
 async function getTweet(id) {
-  const res = await fetch(`http://localhost:3000/api/tweets/${id}`, {
-    cache: "no-store",
-  });
+  await connectDB();
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch tweet");
+  const tweet = await Tweet.findById(id).lean();
+
+  if (!tweet) {
+    throw new Error("Tweet not found");
   }
 
-  return res.json();
+  return JSON.parse(JSON.stringify(tweet));
 }
 // after fetching the tweet by id, we pass it to form component.
 export default async function EditTweetPage({ params }) {

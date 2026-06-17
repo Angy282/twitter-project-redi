@@ -1,22 +1,21 @@
 import { card, typography } from "@/styles/global";
+
 import TweetCard from "@/components/TweetCard";
-import React from "react";
-import Link from "next/link";
+
+import { connectDB } from "@/lib/mongodb";
+
+import Tweet from "@/models/Tweet";
 
 async function getAllTweets() {
-  const res = await fetch("http://localhost:3000/api/tweets", {});
+  await connectDB();
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch tweets");
-  }
+  const tweets = await Tweet.find().sort({ createdAt: -1 }).lean();
 
-  return res.json();
+  return JSON.parse(JSON.stringify(tweets));
 }
 
 export default async function HomePage() {
   const tweets = await getAllTweets();
-  console.log(tweets);
-
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
       <h1 className={`${typography.heading} text-center mb-8`}>
